@@ -107,4 +107,4 @@ sub output {
     print $body;
 }
 
-"ENDOFMODULE";
+1;
