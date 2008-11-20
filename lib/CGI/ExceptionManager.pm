@@ -6,6 +6,8 @@ our $VERSION = '0.01';
 
 sub detach { die bless [], 'CGI::ExceptionManager::Exception' }
 
+my $stacktrace_required;
+
 sub run {
     my ($class, %args) = @_;
 
@@ -15,7 +17,10 @@ sub run {
         if (ref $msg eq 'CGI::ExceptionManager::Exception') {
             undef $err_info;
         } else {
-            require CGI::ExceptionManager::StackTrace;
+            unless ($stacktrace_required) {
+                require CGI::ExceptionManager::StackTrace;
+                $stacktrace_required = 1;
+            }
             $err_info = CGI::ExceptionManager::StackTrace->new($msg);
         }
         die;
