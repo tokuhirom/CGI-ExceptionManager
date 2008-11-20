@@ -101,8 +101,8 @@ sub output {
     print "Status: 500\r\n";
     print "Content-type: text/html; charset=utf-8\r\n";
     print "\r\n";
-    
-    my $body = $err->as_html(%args);
+
+    my $body = $args{renderer} ? $args{renderer}->($err, %args) : $err->as_html(%args);
     utf8::encode($body);
     print $body;
 }

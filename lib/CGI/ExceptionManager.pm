@@ -28,6 +28,7 @@ sub run {
     if ($err_info) {
         $err_info->output(
             powered_by => $args{powered_by} || __PACKAGE__,
+            ($args{renderer} ? (renderer => $args{renderer}) : ())
         );
     }
 }
@@ -82,6 +83,15 @@ detach from current context.
     );
 
 run the new context.
+
+You can specify your own renderer like following code:
+
+    CGI::ExceptionManager->run(
+        callback   => \&code,
+        powered_by => 'MENTA',
+        renderer   => sub {
+        },
+    );
 
 =back
 
