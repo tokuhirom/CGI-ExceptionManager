@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use 5.00800;
 our $VERSION = '0.01';
-use CGI::ExceptionManager::StackTrace;
 
 sub detach { die bless [], 'CGI::ExceptionManager::Exception' }
 
@@ -16,6 +15,7 @@ sub run {
         if (ref $msg eq 'CGI::ExceptionManager::Exception') {
             undef $err_info;
         } else {
+            require CGI::ExceptionManager::StackTrace;
             $err_info = CGI::ExceptionManager::StackTrace->new($msg);
         }
         die;
