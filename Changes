@@ -1,5 +1,9 @@
 Revision history for Perl extension CGI::ExceptionManager
 
+0.03
+
+    - fix generation of bogus error message when error is propagated from a eval(by kazuho++)
+
 0.02
 
     - delay load of CGI::ExceptionManager::StackTrace(by kazuho++)

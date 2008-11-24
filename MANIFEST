@@ -1,4 +1,5 @@
 Changes
+t/04_nested.t
 inc/IO/Scalar.pm
 inc/Module/Install.pm
 inc/Module/Install/AuthorTests.pm
