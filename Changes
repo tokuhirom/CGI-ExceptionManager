@@ -1,5 +1,10 @@
 Revision history for Perl extension CGI::ExceptionManager
 
+0.04
+
+    - CGI::ExceptionManager->run returns collback's return value
+      or detach()'s argument
+
 0.03
 
     - fix generation of bogus error message when error is propagated from a eval(by kazuho++)
