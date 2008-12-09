@@ -4,17 +4,19 @@ use warnings;
 use 5.00800;
 our $VERSION = '0.03';
 
-sub detach { die bless [], 'CGI::ExceptionManager::Exception' }
+sub detach { die bless [@_], 'CGI::ExceptionManager::Exception' }
 
 my $stacktrace_required;
 
 sub run {
     my ($class, %args) = @_;
 
+    my $response;
     my $err_info;
     local $SIG{__DIE__} = sub {
         my ($msg) = @_;
         if (ref $msg eq 'CGI::ExceptionManager::Exception') {
+            $response = $msg->[0];
             undef $err_info;
         } else {
             unless ($stacktrace_required) {
@@ -27,7 +29,7 @@ sub run {
     };
     local $@;
     eval {
-        $args{callback}->();
+        $response = $args{callback}->();
         undef $err_info;
     };
     if ($err_info) {
@@ -36,6 +38,7 @@ sub run {
             ($args{renderer} ? (renderer => $args{renderer}) : ())
         );
     }
+    return $response;
 }
 
 1;
