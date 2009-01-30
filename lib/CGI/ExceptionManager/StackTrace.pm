@@ -85,7 +85,7 @@ sub as_html {
             ' line ',
             $stack->{line},
             q(<pre><code>),
-            _build_context($stack->{file}, $stack->{line}),
+            _build_context($stack->{file}, $stack->{line}) || '',
             q(</code></pre></li>),
         );
     }
