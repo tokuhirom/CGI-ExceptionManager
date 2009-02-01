@@ -1,5 +1,9 @@
 Revision history for Perl extension CGI::ExceptionManager
 
+0.05
+
+    - fixed UUV(by yappo++)
+
 0.04
 
     - CGI::ExceptionManager->run returns collback's return value
