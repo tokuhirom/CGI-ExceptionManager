@@ -50,7 +50,7 @@ sub _build_context {
         my $start = $linenum - 3;
         my $end   = $linenum + 3;
         $start = $start < 1 ? 1 : $start;
-        open my $fh, '<:utf8', $file
+        open my $fh, '<:encoding(utf8)', $file
             or die "cannot open $file:$!";
         my $cur_line = 0;
         while (my $line = <$fh>) {
