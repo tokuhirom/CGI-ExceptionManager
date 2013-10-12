@@ -18,6 +18,12 @@ my $build = Module::Build->new(
     name        => 'CGI-ExceptionManager',
     module_name => 'CGI::ExceptionManager',
 
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/tokuhirom/CGI-ExceptionManager',
+        },
+    },
+
     test_files => ( -d '.git' || $ENV{RELEASE_TESTING} ) ? 't/ xt/' : 't/',
 
     create_readme  => 1,
