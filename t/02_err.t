@@ -15,5 +15,5 @@ CGI::ExceptionManager->run(
 like $out, qr/Status: 500/;
 like $out, qr/ERROR/;
 like $out, qr/Powered by menta/;
-like $out, qr/callback =&gt; sub {/;
+like $out, qr/callback =&gt; sub \{/;
 
